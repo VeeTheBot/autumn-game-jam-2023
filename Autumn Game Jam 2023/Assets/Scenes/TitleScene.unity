@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c71ff3bae8a342a40aaeca31aba42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level1
+  levelName: Cutscene1
 --- !u!114 &1565213487
 MonoBehaviour:
   m_ObjectHideFlags: 0
