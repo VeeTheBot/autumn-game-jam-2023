@@ -81,7 +81,8 @@ public class CameraController : MonoBehaviour
         if(player != null)
         {
             targetPosition = BoundedMovement();
-            camera.orthographicSize = playerZoom;
+            float velocity = 0;
+            camera.orthographicSize = Mathf.SmoothDamp(camera.orthographicSize, playerZoom, ref velocity, movementTime);
         }
     }
 
@@ -91,5 +92,10 @@ public class CameraController : MonoBehaviour
             Mathf.Clamp(player.position.x, xBounds.x, xBounds.y),
             Mathf.Clamp(player.position.y, yBounds.x, yBounds.y),
             startingPosition.z);
+    }
+
+    public void SetZoom(float zoom)
+    {
+        playerZoom = zoom;
     }
 }

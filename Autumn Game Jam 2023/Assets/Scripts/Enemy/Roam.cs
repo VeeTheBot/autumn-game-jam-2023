@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class Roam : MonoBehaviour
 {
+    // The sprite renderer
+    private SpriteRenderer spriteRenderer;
     // How fast the enemy moves
     [SerializeField] private float baseSpeed = 150;
     // The lower and upper bounds of the enemy's roam
@@ -17,10 +19,9 @@ public class Roam : MonoBehaviour
     // Which way the enemy is travelling
     [SerializeField] private bool movingLeft = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,10 +31,12 @@ public class Roam : MonoBehaviour
         if(transform.position.x < lowerBound)
         {
             movingLeft = false;
+            spriteRenderer.flipX = true;
         }
         else if(transform.position.x > upperBound)
         {
             movingLeft = true;
+            spriteRenderer.flipX = false;
         }
 
         float movementSpeed = baseSpeed * Time.deltaTime;
